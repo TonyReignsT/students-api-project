@@ -11,8 +11,10 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:8000",
-        description: "Local server"
+        url: "https://students-api-project.onrender.com",
+        description: "Deployed server",
+        // url: "http://localhost:8000",
+        // description: "Local server"
       }
     ]
   },
