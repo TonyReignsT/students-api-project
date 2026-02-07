@@ -4,7 +4,7 @@ const {MongoClient} = require('mongodb');
 const MongoStore = require("connect-mongo");
 
 
-app.set("trust proxy", 1); // Trust proxy
+//app.set("trust proxy", 1); // Trust proxy
 
 
 const session = require("express-session");
