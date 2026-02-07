@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const isAuth = require("../middleware/authMiddleware")
 
 const {
   getAllStudents,
@@ -16,12 +17,12 @@ router.get("/", getAllStudents);
 router.get("/:id", getStudentById);
 
 // POST create student
-router.post("/", createStudent);
+router.post("/", isAuth, createStudent);
 
 // PUT update student
-router.put("/:id", updateStudent);
+router.put("/:id",isAuth, updateStudent);
 
 // DELETE student
-router.delete("/:id", deleteStudent);
+router.delete("/:id", isAuth, deleteStudent);
 
 module.exports = router;

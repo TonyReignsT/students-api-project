@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const isAuth = require("../middleware/authMiddleware");
 
 
 const {
@@ -13,8 +14,8 @@ const {
 // CRUD routes
 router.get("/", getAllCourses);
 router.get("/:id", getCourseById);
-router.post("/", createCourse);
-router.put("/:id", updateCourse);
-router.delete("/:id", deleteCourse);
+router.post("/", isAuth, createCourse);
+router.put("/:id", isAuth, updateCourse);
+router.delete("/:id", isAuth, deleteCourse);
 
 module.exports = router;
