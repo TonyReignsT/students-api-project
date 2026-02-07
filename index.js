@@ -1,6 +1,11 @@
 const express = require('express');
 require("dotenv").config();
 const {MongoClient} = require('mongodb');
+const MongoStore = require("connect-mongo");
+
+
+app.set("trust proxy", 1); // Trust proxy
+
 
 const session = require("express-session");
 const passport = require("passport");
@@ -31,6 +36,13 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+      collectionName: "sessions"
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 // 1 day
+    }
   })
 );
 
