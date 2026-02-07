@@ -1,10 +1,9 @@
 const express = require('express');
 require("dotenv").config();
-const {MongoClient} = require('mongodb');
+// const {MongoClient} = require('mongodb');
 const MongoStore = require("connect-mongo");
 
 
-//app.set("trust proxy", 1); // Trust proxy
 
 
 const session = require("express-session");
@@ -21,9 +20,11 @@ const authRoutes = require("./routes/authRoutes");
 // Swagger
 const {swaggerUi, swaggerSpec} = require("./swagger/swagger");
 
-
-
 const app = express();
+
+app.set("trust proxy", 1); // Trust proxy
+
+// const app = express();
 app.use(express.json());
 const PORT = process.env.PORT || 8000;
 
@@ -36,7 +37,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
+    store: MongoStore({
       mongoUrl: process.env.MONGODB_URI,
       collectionName: "sessions"
     }),
