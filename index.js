@@ -1,7 +1,7 @@
 const express = require('express');
 require("dotenv").config();
 // const {MongoClient} = require('mongodb');
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 
 
 
