@@ -11,7 +11,8 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       // callbackURL: "/auth/google/callback",
-      callbackURL: "http://localhost:8000/auth/google/callback",
+      // callbackURL: "http://localhost:8000/auth/google/callback",
+      callbackUrl: process.env.GOOGLE_CALLBACK_URL,
     },
     async (accessToken, refreshToken, profile, done) => {
       const client = new MongoClient(uri);
